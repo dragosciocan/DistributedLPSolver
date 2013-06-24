@@ -189,7 +189,7 @@ namespace distributed_solver {
         }
     }
     
-    void GlobalProblem::ConstructPrimal(vector<__gnu_cxx::hash_map<int, long double> >* primal_sol, int iteration) {
+    void GlobalProblem::ConstructPrimal(int iteration) {
         num_iterations_++;
         
         // Reset primal solution.
@@ -270,7 +270,7 @@ namespace distributed_solver {
                 long double u = subproblems_[i].envelope_points_[budget_allocation_[i].first].first;
                 long double v = subproblems_[i].envelope_points_[budget_allocation_[i].first].second;
                 dual_val += u * budget_allocation_[i].second + v;
-                ConstructSubproblemPrimal(primal_sol, i, budget_allocation_[i].second, budget_allocation_[i].first);
+                ConstructSubproblemPrimal(i, budget_allocation_[i].second, budget_allocation_[i].first);
             }
         }
         t2 = clock();
@@ -282,8 +282,7 @@ namespace distributed_solver {
         cout << "\n";
     }
     
-    void GlobalProblem::ConstructSubproblemPrimal(vector<__gnu_cxx::hash_map<int, long double> >* primal_sol,
-                                                  int subproblem_index, long double budget_allocation, int opt_region) {
+    void GlobalProblem::ConstructSubproblemPrimal(int subproblem_index, long double budget_allocation, int opt_region) {
         // Figure out opt u, v.
         long double u = subproblems_[subproblem_index].envelope_points_[opt_region].first;
         long double v = subproblems_[subproblem_index].envelope_points_[opt_region].second;

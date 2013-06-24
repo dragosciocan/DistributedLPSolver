@@ -193,11 +193,11 @@ namespace distributed_solver {
     long double AllocationMW::CalculateGlobalMWProblemOpt() {
         long double MW_revenue = 0;
         
-        for (int a = 0; a < (*primal_sol_).size(); ++a) {
-            for (__gnu_cxx::hash_map<int, long double>::iterator iter = (*primal_sol_)[a].begin();
-                 iter != (*primal_sol_)[a].end();
+        for (int a = 0; a < (*solution_).size(); ++a) {
+            for (__gnu_cxx::hash_map<int, pair<long double, long double> >::iterator iter = (*solution_)[a].begin();
+                 iter != (*solution_)[a].end();
                  ++iter) {
-                MW_revenue += iter->second * (*bids_matrix_)[a][iter->first];
+                MW_revenue += iter->second.first * (*bids_matrix_)[a][iter->first];
             }
         }
         /*
@@ -242,7 +242,7 @@ namespace distributed_solver {
             clock_t t1, t2;
             float diff;
             t1 = clock();
-            global_problem_.ConstructPrimal(primal_sol_, t);
+            global_problem_.ConstructPrimal(t);
             t2 = clock();
             diff = ((float)t2-(float)t1);
             cout << "execution time of relaxation computation was " << diff << "\n";
@@ -254,7 +254,7 @@ namespace distributed_solver {
             cout << "execution time of average primal update was " << diff << "\n";
             
             // Runs CPLEX for debugging only, should be turned off.
-            //VerifySolution();
+            // VerifySolution();
             
             // Calculate slacks, update averages and recalculate weights.
             t1 = clock();

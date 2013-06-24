@@ -37,8 +37,6 @@ namespace distributed_solver {
         vector<long double>* budgets_;
         vector<long double> slacks_;
         vector<long double> avg_slacks_;
-        vector<__gnu_cxx::hash_map<int, long double> >* primal_sol_;
-        vector<__gnu_cxx::hash_map<int, long double> >* avg_primal_sol_;
         vector<__gnu_cxx::hash_map<int, pair<long double, long double> > >* solution_;
         
         // Multiplicative weights related vars.

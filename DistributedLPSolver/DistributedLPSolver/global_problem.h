@@ -36,7 +36,7 @@ namespace distributed_solver {
                       vector<__gnu_cxx::hash_map<int, pair<long double, long double> > >* solution, bool binary);
         void InitializeInstance();
         void InitializeBudgetAllocation();
-        void ConstructPrimal(vector<__gnu_cxx::hash_map<int, long double> >* primal_sol, int iteration);
+        void ConstructPrimal(int iteration);
         
     private:
         void FindOptimalBudgetAllocation();
@@ -44,8 +44,7 @@ namespace distributed_solver {
         vector<long double> CalculateAllocationDeltaBin(vector<long double>* critical_ratios, vector<long double>* budget_usage);
         void AllocateCurrentRatio(long double critical_ratio);
         void AllocateCurrentRatios(long double lower_bound, long double upper_bound);
-        void ConstructSubproblemPrimal(vector<__gnu_cxx::hash_map<int, long double> >* primal_sol,
-                                       int subproblem_index, long double budget_allocation, int opt_region);
+        void ConstructSubproblemPrimal(int subproblem_index, long double budget_allocation, int opt_region);
         long double numerical_accuracy_tolerance_;
         long double primal_assignment_test_;
     };

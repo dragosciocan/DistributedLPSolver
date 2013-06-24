@@ -1,0 +1,257 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		203CE85A17788E3900699F1B /* DistributedLPSolver.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 203CE85917788E3900699F1B /* DistributedLPSolver.1 */; };
+		203CE86E17788EAC00699F1B /* allocation_mw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 203CE86017788EAC00699F1B /* allocation_mw.cpp */; };
+		203CE86F17788EAC00699F1B /* convex_hull.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 203CE86217788EAC00699F1B /* convex_hull.cpp */; };
+		203CE87017788EAC00699F1B /* global_problem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 203CE86417788EAC00699F1B /* global_problem.cpp */; };
+		203CE87317788EAC00699F1B /* subproblem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 203CE86A17788EAC00699F1B /* subproblem.cpp */; };
+		203CE87417788EAC00699F1B /* upper_envelope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 203CE86C17788EAC00699F1B /* upper_envelope.cpp */; };
+		203CE877177891AA00699F1B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 203CE875177891AA00699F1B /* main.cpp */; };
+		203CE87A177894FB00699F1B /* instance.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 203CE878177894FB00699F1B /* instance.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		203CE85217788E3900699F1B /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+				203CE85A17788E3900699F1B /* DistributedLPSolver.1 in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		203CE85417788E3900699F1B /* DistributedLPSolver */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = DistributedLPSolver; sourceTree = BUILT_PRODUCTS_DIR; };
+		203CE85917788E3900699F1B /* DistributedLPSolver.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = DistributedLPSolver.1; sourceTree = "<group>"; };
+		203CE86017788EAC00699F1B /* allocation_mw.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = allocation_mw.cpp; sourceTree = "<group>"; };
+		203CE86117788EAC00699F1B /* allocation_mw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = allocation_mw.h; sourceTree = "<group>"; };
+		203CE86217788EAC00699F1B /* convex_hull.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = convex_hull.cpp; sourceTree = "<group>"; };
+		203CE86317788EAC00699F1B /* convex_hull.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = convex_hull.h; sourceTree = "<group>"; };
+		203CE86417788EAC00699F1B /* global_problem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = global_problem.cpp; sourceTree = "<group>"; };
+		203CE86517788EAC00699F1B /* global_problem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = global_problem.h; sourceTree = "<group>"; };
+		203CE86A17788EAC00699F1B /* subproblem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = subproblem.cpp; sourceTree = "<group>"; };
+		203CE86B17788EAC00699F1B /* subproblem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = subproblem.h; sourceTree = "<group>"; };
+		203CE86C17788EAC00699F1B /* upper_envelope.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = upper_envelope.cpp; sourceTree = "<group>"; };
+		203CE86D17788EAC00699F1B /* upper_envelope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = upper_envelope.h; sourceTree = "<group>"; };
+		203CE875177891AA00699F1B /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		203CE878177894FB00699F1B /* instance.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = instance.cpp; sourceTree = "<group>"; };
+		203CE879177894FB00699F1B /* instance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = instance.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		203CE85117788E3900699F1B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		203CE84B17788E3900699F1B = {
+			isa = PBXGroup;
+			children = (
+				203CE85617788E3900699F1B /* DistributedLPSolver */,
+				203CE85517788E3900699F1B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		203CE85517788E3900699F1B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				203CE85417788E3900699F1B /* DistributedLPSolver */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		203CE85617788E3900699F1B /* DistributedLPSolver */ = {
+			isa = PBXGroup;
+			children = (
+				203CE86017788EAC00699F1B /* allocation_mw.cpp */,
+				203CE86117788EAC00699F1B /* allocation_mw.h */,
+				203CE86217788EAC00699F1B /* convex_hull.cpp */,
+				203CE86317788EAC00699F1B /* convex_hull.h */,
+				203CE86417788EAC00699F1B /* global_problem.cpp */,
+				203CE86517788EAC00699F1B /* global_problem.h */,
+				203CE86A17788EAC00699F1B /* subproblem.cpp */,
+				203CE86B17788EAC00699F1B /* subproblem.h */,
+				203CE86C17788EAC00699F1B /* upper_envelope.cpp */,
+				203CE86D17788EAC00699F1B /* upper_envelope.h */,
+				203CE85917788E3900699F1B /* DistributedLPSolver.1 */,
+				203CE875177891AA00699F1B /* main.cpp */,
+				203CE878177894FB00699F1B /* instance.cpp */,
+				203CE879177894FB00699F1B /* instance.h */,
+			);
+			path = DistributedLPSolver;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		203CE85317788E3900699F1B /* DistributedLPSolver */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 203CE85D17788E3900699F1B /* Build configuration list for PBXNativeTarget "DistributedLPSolver" */;
+			buildPhases = (
+				203CE85017788E3900699F1B /* Sources */,
+				203CE85117788E3900699F1B /* Frameworks */,
+				203CE85217788E3900699F1B /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DistributedLPSolver;
+			productName = DistributedLPSolver;
+			productReference = 203CE85417788E3900699F1B /* DistributedLPSolver */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		203CE84C17788E3900699F1B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Dragos Ciocan";
+			};
+			buildConfigurationList = 203CE84F17788E3900699F1B /* Build configuration list for PBXProject "DistributedLPSolver" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 203CE84B17788E3900699F1B;
+			productRefGroup = 203CE85517788E3900699F1B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				203CE85317788E3900699F1B /* DistributedLPSolver */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		203CE85017788E3900699F1B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				203CE86E17788EAC00699F1B /* allocation_mw.cpp in Sources */,
+				203CE86F17788EAC00699F1B /* convex_hull.cpp in Sources */,
+				203CE87017788EAC00699F1B /* global_problem.cpp in Sources */,
+				203CE87317788EAC00699F1B /* subproblem.cpp in Sources */,
+				203CE87417788EAC00699F1B /* upper_envelope.cpp in Sources */,
+				203CE877177891AA00699F1B /* main.cpp in Sources */,
+				203CE87A177894FB00699F1B /* instance.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		203CE85B17788E3900699F1B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		203CE85C17788E3900699F1B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		203CE85E17788E3900699F1B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		203CE85F17788E3900699F1B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		203CE84F17788E3900699F1B /* Build configuration list for PBXProject "DistributedLPSolver" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				203CE85B17788E3900699F1B /* Debug */,
+				203CE85C17788E3900699F1B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		203CE85D17788E3900699F1B /* Build configuration list for PBXNativeTarget "DistributedLPSolver" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				203CE85E17788E3900699F1B /* Debug */,
+				203CE85F17788E3900699F1B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 203CE84C17788E3900699F1B /* Project object */;
+}

@@ -11,30 +11,30 @@
 #include "instance.h"
 
 namespace distributed_solver {
-    
+
     Instance::Instance(int num_advertisers, int num_impressions, int num_slots, long double bid_sparsity,
                        long double epsilon, long double scaling_factor, long double numerical_accuracy_tolerance) {
         epsilon_ = epsilon;
         scaling_factor_ = scaling_factor;
         iteration_count_ = 0;
         numerical_accuracy_tolerance_ = numerical_accuracy_tolerance;
-        
+
         num_advertisers_ = num_advertisers;
         num_impressions_ = num_impressions;
         num_slots_ = num_slots;
         bid_sparsity_ = bid_sparsity;
         num_shards_ = 10;
-        
+
         budgets_ = vector<long double>(num_advertisers_);
         SetBudgets();
     }
-    
+
     void Instance::GenerateInstance() {
         transpose_bids_matrix_.reserve(num_impressions_);
         for (int i = 0; i < num_impressions_; ++i) {
             transpose_bids_matrix_.push_back(*new __gnu_cxx::hash_map<int, long double>());
         }
-        
+
         srand(1);
         max_bid_ = 0;
         for (int j = 0; j < num_advertisers_; ++j) {
@@ -55,7 +55,7 @@ namespace distributed_solver {
         cout << "Generated instance \n";
         ReportGraphTopology();
     }
-    
+
     void Instance::WriteInstanceToCSV(string file_name_handle) {
         // Open file.
         string file_name;
@@ -66,7 +66,7 @@ namespace distributed_solver {
         // file.open(file_name);
         // Go through bids and write them to file shards.
         string bid_row;
-        
+
         for (int j = 0; j < num_advertisers_; ++j) {
             // Get bid vector for each advertiser, and write it to a row of the csv.
             /*
@@ -80,11 +80,11 @@ namespace distributed_solver {
             // file << bid_row;
             bid_row = "";
         }
-        
+
         // Close file
         // file.close();
     }
-    
+
     void Instance::GenerateAndWriteInstance(string file_name_handle) {
         srand(1);
         string file_name;
@@ -113,23 +113,33 @@ namespace distributed_solver {
             // file.close();
         }
     }
-    
-    void Instance::RunMultiplicativeWeights(long double num_iterations, long double numerical_accuracy_tolerance) {
-        BuildPrimals();
-        AllocationMW alloc_mw = AllocationMW(num_advertisers_, num_impressions_, num_slots_,
-                                             bid_sparsity_, max_bid_, epsilon_, numerical_accuracy_tolerance_,
-                                             &bids_matrix_, &transpose_bids_matrix_,
-                                             &budgets_, solution_, true);
-        alloc_mw.RunAllocationMW(num_iterations);
+
+    void Instance::RunMultiplicativeWeights(long double num_iterations, long double numerical_accuracy_tolerance, bool binary) {
+    	BuildPrimals();
+    	AllocationMW alloc_mw = AllocationMW(num_advertisers_, num_impressions_, num_slots_,
+        	                                 bid_sparsity_, max_bid_, epsilon_, numerical_accuracy_tolerance_,
+        	                                 &bids_matrix_, &transpose_bids_matrix_,
+        	                                 &budgets_, solution_, binary);
+         alloc_mw.RunAllocationMW(num_iterations);
+
     }
-    
+    void Instance::RunMultiplicativeWeights(long double num_iterations, long double numerical_accuracy_tolerance, bool binary, long double scale, int intervals) {
+    	BuildPrimals();
+    	AllocationMW alloc_mw = AllocationMW(num_advertisers_, num_impressions_, num_slots_,
+        	                                 bid_sparsity_, max_bid_, epsilon_, numerical_accuracy_tolerance_,
+        	                                 &bids_matrix_, &transpose_bids_matrix_,
+        	                                 &budgets_, solution_, binary, scale, intervals);
+         alloc_mw.RunAllocationMW(num_iterations);
+
+    }
+
     void Instance::SetBudgets() {
         long double average_bid = 0.5; // Need to change this manually depending on how bids are drawn.
         for (int j = 0; j < num_advertisers_; ++j) {
             budgets_[j] = average_bid * (num_impressions_ / num_advertisers_) * scaling_factor_;
         }
     }
-    
+
     void Instance::UpdateAvgPrimal(int t, vector<__gnu_cxx::hash_map<int, pair<long double, long double> > >* solution) {
         //long double new_value = 0;
         for (int i = 0; i < (*solution).size(); ++i) {
@@ -140,7 +150,7 @@ namespace distributed_solver {
             }
         }
     }
-    
+
     void Instance::BuildPrimals() {
         solution_ = new vector<__gnu_cxx::hash_map<int, pair<long double, long double> > >();
         for (int j = 0; j < num_advertisers_; ++j) {
@@ -153,18 +163,18 @@ namespace distributed_solver {
             solution_->push_back(row);
         }
     }
-    
+
     void Instance::ResetCurrentPrimal(vector<__gnu_cxx::hash_map<int, pair<long double, long double> > >* sol) {
         for (int i = 0; i < (*sol).size(); ++i) {
             for (__gnu_cxx::hash_map<int, pair<long double, long double> >::iterator iter =
                  (*sol)[i].begin();
                  iter != (*sol)[i].end();
                  ++iter) {
-                iter->second.first = 0.0;
+                 iter->second.first = 0.0;
             }
         }
     }
-    
+
     void Instance::ReportGraphTopology() {
         for (int a = 0; a < bids_matrix_.size(); ++a) {
             cout << "Advertiser " << a << " degree is " << bids_matrix_[a].size() << "\n";

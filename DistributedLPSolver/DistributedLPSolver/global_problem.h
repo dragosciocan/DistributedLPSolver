@@ -25,30 +25,37 @@ namespace distributed_solver {
         long double budget_;
         int num_iterations_;
         bool binary_;
-        
+        long double min_slope_;
+        long double max_slope_;
+        long double cr_transition_scale_;
+        int num_bin_intervals_;
+
         vector<pair<int, long double> > budget_allocation_;
         vector<Subproblem> subproblems_;
         vector<long double> slacks_;
-        
+
         vector<__gnu_cxx::hash_map<int, pair<long double, long double> > >* solution_;
-        
+
         GlobalProblem(int num_partitions, long double max_bid, long double advertiser_indegree, long double numerical_accuracy_tolerance,
                       vector<__gnu_cxx::hash_map<int, pair<long double, long double> > >* solution, bool binary);
+        GlobalProblem(int num_partitions, long double max_bid, long double advertiser_indegree, long double numerical_accuracy_tolerance,
+                              vector<__gnu_cxx::hash_map<int, pair<long double, long double> > >* solution, bool binary, long double scale, int intervals);
         void InitializeInstance();
         void InitializeBudgetAllocation();
         void ConstructPrimal(int iteration);
-        
+
     private:
         void FindOptimalBudgetAllocation();
         void FindOptimalBudgetAllocationBinSearch(long double lower, long double upper,  int num_ratios);
         vector<long double> CalculateAllocationDeltaBin(vector<long double>* critical_ratios, vector<long double>* budget_usage);
         void AllocateCurrentRatio(long double critical_ratio);
         void AllocateCurrentRatios(long double lower_bound, long double upper_bound);
+        void FindMinMaxSlope();
         void ConstructSubproblemPrimal(int subproblem_index, long double budget_allocation, int opt_region);
         long double numerical_accuracy_tolerance_;
         long double primal_assignment_test_;
     };
-    
+
     class Slope {
     public:
         long double slope_;
@@ -56,7 +63,7 @@ namespace distributed_solver {
         int region_index_;
         Slope(long double slope, int subproblem_index, int region_index);
     };
-    
+
     struct compare_Slope
     {
         bool operator() (const Slope & lhs, const Slope & rhs) {

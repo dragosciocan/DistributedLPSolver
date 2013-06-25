@@ -24,13 +24,13 @@ namespace distributed_solver {
         coefficient_ = coefficient;
         weight_ = weight;
     }
-    
+
     Constraint::Constraint() {}
-    
+
     void Constraint::set_active(bool value) {
         is_active_ = value;
     }
-    
+
     Subproblem::Subproblem(int num_vars,
                            std::vector<std::pair<long double, long double> >* coefficients,
                            std::vector<int>* advertiser_index) {
@@ -66,15 +66,15 @@ namespace distributed_solver {
                 active_constraints.push_back(Constraint(constraints_[i].price_, constraints_[i].coefficient_, constraints_[i].weight_));
             }
         }
-                
+
         if (active_constraints.size() < 1) {
             return;
         }
-       
+
         // Sort list of active constraints. Note that the current implementation creates a clone of the
         // constraints vector. This isn't necessary, should be fixed.
         std::sort(active_constraints.begin(), active_constraints.end(), compare_Constraint_by_weight());
-               
+
         // Go through active constraints, create envelope points.
         envelope_points_.clear();
         // First create intersection with x axis
@@ -99,8 +99,8 @@ namespace distributed_solver {
             } else {
                 budget_cutoffs_.push_back(budget_cutoffs_[k]);
             }
-            
-            
+
+
         }
         // Add +\infty for convenience.
         budget_cutoffs_.push_back(DBL_MAX);
@@ -111,17 +111,17 @@ namespace distributed_solver {
         if (constraints_.size() < 1) {
             return;
         }
-        
+
         //if (iteration == 6 && index == 715) {
         if (iteration == 2 && index == 715) {
             int y = 0;
             y++;
             cout << y;
         }
-        
+
         // Eliminate all superfluous constraints.
         std::vector<Constraint> active_constraints;
-       
+
         vector<Point> points;
         for (int p = 0;  p < constraints_.size(); ++p) {
             points.push_back(Point());
@@ -136,9 +136,9 @@ namespace distributed_solver {
         points[constraints_.size()].y = 0.0;
         points[constraints_.size()].weight = -1;
         points[constraints_.size()].constraint_id = -1;
-        
+
         vector<Point> convex_hull_points = convex_hull(points);
-        
+
         for (int p = 0;  p < convex_hull_points.size(); ++p) {
             if ((convex_hull_points[p].x != 0.0) || (convex_hull_points[p].y != 0.0)) {
                 active_constraints.push_back(Constraint(convex_hull_points[p].y * (-1.0),
@@ -147,11 +147,11 @@ namespace distributed_solver {
                 constraints_[convex_hull_points[p].constraint_id].is_active_ = true;
             }
         }
-        
+
         // Sort list of active constraints. Note that the current implementation creates a clone of the
         // constraints vector. This isn't necessary, should be fixed.
         std::sort(active_constraints.begin(), active_constraints.end(), compare_Constraint_by_weight());
-        
+
         // Go through active constraints, create envelope points.
         envelope_points_.clear();
         // First create intersection with x axis
@@ -182,12 +182,12 @@ namespace distributed_solver {
         budget_cutoffs_.push_back(DBL_MAX);
         active_constraints.clear();
     }
-    
+
     void Subproblem::SolveSubproblemConvexHullOptimized(int iteration, int index) {
         if (constraints_.size() < 1) {
             return;
         }
-        
+
         //if (iteration == 6 && index == 715) {
         if (iteration == 2 && index == 715) {
             int y = 0;
@@ -202,7 +202,7 @@ namespace distributed_solver {
         diff = ((float)t2-(float)t1);
         t3 = clock();
         diff = ((float)t3-(float)t2);
-        
+
         // Go through active constraints, create envelope points.
         envelope_points_.clear();
         envelope_points_.push_back(std::make_pair((active_constraints[active_constraints.size() - 2].price_ /
@@ -214,7 +214,7 @@ namespace distributed_solver {
                                                                 active_constraints[k - 1].coefficient_ * u_value)));
         }
         envelope_points_.push_back(std::make_pair(0.0, active_constraints[0].price_));
-        
+
         // Find the budget ranges where there is a change of basis.
         budget_cutoffs_.clear();
         // Start by addding 0 for convenience.

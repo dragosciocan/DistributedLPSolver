@@ -16,7 +16,7 @@ namespace distributed_solver {
     {
         return (A.coefficient_ - O.coefficient_) * (B.price_ - O.price_) - (A.price_ - O.price_) * (B.coefficient_ - O.coefficient_);
     }
-    
+
     // Returns a list of points on the convex hull in counter-clockwise order.
     vector<Constraint> upper_envelope(vector<Constraint> P, long double numerical_tolerance)
     {

@@ -34,7 +34,7 @@ namespace distributed_solver {
             return (lhs.weight_ < rhs.weight_);
         }
     };
-            
+
     class Subproblem {
     public:
         int num_vars_;

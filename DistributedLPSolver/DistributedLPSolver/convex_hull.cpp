@@ -21,17 +21,17 @@ vector<Point> convex_hull(vector<Point> P)
 {
     int n = P.size(), k = 0;
     vector<Point> H(2*n);
-    
+
     // Sort points lexicographically
     sort(P.begin(), P.end());
-    
+
     // Build lower hull
     for (int i = 0; i < n; i++) {
         while (k >= 2 && cross(H[k-2], H[k-1], P[i]) <= 0.000000000001) k--;
         H[k] = P[i];
         k++;
     }
-    
+
     H.resize(k);
     return H;
 }
